@@ -27,11 +27,11 @@ const HealthIndicator = () => {
     <div className="flex items-center">
       <div className="mr-2 text-sm text-gray-600">API Status:</div>
       {isLoading ? (
-        <div className="h-3 w-3 rounded-full bg-gray-300"></div>
+        <div className="h-4 w-4 rounded-full bg-gray-300"></div>
       ) : (
         <div
-          className={`h-3 w-3 rounded-full ${
-            isHealthy ? 'bg-green-500' : 'bg-red-500'
+          className={`h-4 w-4 rounded-full ${
+            isHealthy ? 'bg-green-500' : 'bg-gray-500'
           }`}
           title={isHealthy ? 'API is healthy' : 'API is down'}
         ></div>
