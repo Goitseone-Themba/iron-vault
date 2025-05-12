@@ -47,7 +47,7 @@ const ResultsTable = ({ refreshTrigger }) => {
     
     return (
       <ArrowUpDown className={`inline-block h-4 w-4 ml-1 ${
-        sortField === field ? 'text-blue-600' : 'text-gray-400'
+        sortField === field ? 'text-rose-600' : 'text-gray-400'
       }`} />
     );
   };
@@ -80,7 +80,7 @@ const ResultsTable = ({ refreshTrigger }) => {
         <h2 className="text-xl font-semibold text-gray-800">Loan Applications</h2>
         <button
           onClick={fetchLoans}
-          className="px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-rose-600 hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
         >
           Refresh
         </button>
@@ -98,7 +98,7 @@ const ResultsTable = ({ refreshTrigger }) => {
       
       {loading ? (
         <div className="flex justify-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-rose-600"></div>
         </div>
       ) : loans.length === 0 ? (
         <div className="text-center py-8 text-gray-500">
