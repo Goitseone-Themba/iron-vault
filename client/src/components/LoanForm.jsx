@@ -111,7 +111,7 @@ const LoanForm = ({ onSubmitSuccess }) => {
               required
               min="18"
               max="120"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-rose-500 focus:border-rose-500"
             />
           </div>
           
@@ -128,7 +128,7 @@ const LoanForm = ({ onSubmitSuccess }) => {
               required
               min="0"
               step="0.01"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-rose-500 focus:border-rose-500"
             />
           </div>
           
@@ -145,7 +145,7 @@ const LoanForm = ({ onSubmitSuccess }) => {
               required
               min="0"
               step="0.01"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-rose-500 focus:border-rose-500"
             />
           </div>
           
@@ -162,7 +162,7 @@ const LoanForm = ({ onSubmitSuccess }) => {
               required
               min="300"
               max="850"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-rose-500 focus:border-rose-500"
             />
           </div>
           
@@ -180,7 +180,7 @@ const LoanForm = ({ onSubmitSuccess }) => {
               min="0"
               max="1"
               step="0.01"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-rose-500 focus:border-rose-500"
             />
           </div>
           
@@ -196,7 +196,7 @@ const LoanForm = ({ onSubmitSuccess }) => {
               onChange={handleChange}
               required
               min="0"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-rose-500 focus:border-rose-500"
             />
           </div>
           
@@ -213,7 +213,7 @@ const LoanForm = ({ onSubmitSuccess }) => {
               required
               min="0"
               step="0.01"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-rose-500 focus:border-rose-500"
             />
           </div>
           
@@ -229,7 +229,7 @@ const LoanForm = ({ onSubmitSuccess }) => {
               onChange={handleChange}
               required
               min="0"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-rose-500 focus:border-rose-500"
             />
           </div>
         </div>
@@ -238,7 +238,7 @@ const LoanForm = ({ onSubmitSuccess }) => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-400"
+            className="w-full px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-rose-600 hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 disabled:bg-rose-400"
           >
             {loading ? 'Submitting...' : 'Submit Loan Application'}
           </button>

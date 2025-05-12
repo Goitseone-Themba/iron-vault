@@ -46,7 +46,7 @@ const Login = () => {
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-md">
         <div className="text-center">
           <div className="flex justify-center">
-            <Shield className="h-12 w-12 text-blue-600" />
+            <Shield className="h-12 w-12 text-rose-600" />
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">IronVault</h2>
           <p className="mt-2 text-sm text-gray-600">Loan Risk Assessment System</p>
@@ -75,7 +75,7 @@ const Login = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-rose-500 focus:border-rose-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
               />
             </div>
@@ -91,7 +91,7 @@ const Login = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-rose-500 focus:border-rose-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
                 minLength={6}
               />
@@ -102,7 +102,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-400"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-rose-600 hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 disabled:bg-rose-400"
             >
               {loading ? 'Processing...' : (isSigningUp ? 'Sign up' : 'Sign in')}
             </button>
@@ -110,7 +110,7 @@ const Login = () => {
             <button
               type="button"
               onClick={() => setIsSigningUp(!isSigningUp)}
-              className="text-sm text-blue-600 hover:text-blue-500"
+              className="text-sm text-rose-600 hover:text-rose-500"
             >
               {isSigningUp ? 'Already have an account? Sign in' : 'Need an account? Sign up'}
             </button>
