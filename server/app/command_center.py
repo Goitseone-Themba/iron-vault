@@ -4,6 +4,11 @@ from datetime import datetime
 from typing import Dict, Any
 from supabase import Client
 from app.supabase_client import get_supabase_client
+import logging
+
+# Configure logging to console
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class CommandCenter:
     def __init__(self):
@@ -22,13 +27,14 @@ class CommandCenter:
             try:
                 response = self.supabase.table("logs").insert(log_entry).execute()
                 if response.data:
+                    logger.info(f"Logged event: {event}, status: {status}, details: {details}")
                     return
                 else:
-                    await self.log_event("supabase_write_retry", "failed", {"attempt": attempt + 1, "error": "No data returned"})
+                    logger.warning(f"Supabase write retry {attempt + 1}/3 failed: No data returned")
             except Exception as e:
-                await self.log_event("supabase_write_retry", "failed", {"attempt": attempt + 1, "error": str(e)})
+                logger.warning(f"Supabase write retry {attempt + 1}/3 failed: {str(e)}")
                 time.sleep(1)  # Wait 1 second before retrying
-        await self.log_event("supabase_write_failed", "error", {"message": "Failed to write log after 3 attempts"})
+        logger.error("Failed to write log to Supabase after 3 attempts")
 
     # Validate loan application input
     def validate_loan_data(self, data: dict) -> tuple[bool, str]:

@@ -6,6 +6,11 @@ import uuid
 from app.models import predict_risk
 from app.command_center import CommandCenter
 from app.supabase_client import get_supabase_client
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="IronVault Backend")
 command_center = CommandCenter()
@@ -13,6 +18,7 @@ supabase = get_supabase_client()
 
 @app.post("/loan")
 async def process_loan(data: Dict):
+    logger.info("Processing loan request")
     # Log request
     await command_center.log_event("loan_request", "received", data)
 
@@ -48,6 +54,7 @@ async def process_loan(data: Dict):
         await command_center.log_event("supabase_write", "failed", {"error": str(e)})
         raise HTTPException(status_code=500, detail={"error": "Failed to store loan data"})
 
+    logger.info("Loan processed successfully")
     # Return result to frontend
     return {
         "id": loan_entry["id"],
@@ -60,6 +67,7 @@ async def process_loan(data: Dict):
 
 @app.post("/batch")
 async def process_batch(file: UploadFile = File(...)):
+    logger.info("Processing batch request")
     # Log request
     await command_center.log_event("batch_request", "received", {"filename": file.filename})
 
@@ -132,22 +140,28 @@ async def process_batch(file: UploadFile = File(...)):
             "approval_status": prediction["approval_status"]
         })
 
+    logger.info(f"Batch processed successfully, {len(results)} rows completed")
     return results
 
 @app.get("/health")
 async def health_check():
+    logger.info("Health check requested")
     # Check Supabase connection
+    db_status = "disconnected"
     try:
         response = supabase.table("loans").select("id").limit(1).execute()
         db_status = "connected" if response.data is not None else "disconnected"
+        await command_center.log_event("health_check_db", "success", {"status": db_status})
     except Exception as e:
         await command_center.log_event("health_check_db", "failed", {"error": str(e)})
-        db_status = "disconnected"
+        logger.warning(f"Supabase health check failed: {str(e)}")
 
     # Check model availability (mock for now)
     model_status = "available"  # Replace with actual model check when using Colab model
+    await command_center.log_event("health_check_model", "success", {"status": model_status})
 
     status = "ok" if db_status == "connected" and model_status == "available" else "error"
     await command_center.log_event("health_check", "completed", {"status": status, "db": db_status, "model": model_status})
     
+    logger.info(f"Health check completed: {status}")
     return {"status": status, "db": db_status, "model": model_status}
